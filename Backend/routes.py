@@ -66,7 +66,7 @@ def user_login():
 
         access_token = create_access_token(identity=user.id)
 
-        return jsonify({"message":"Login Successfull","token":access_token,"role":user.role}),200
+        return jsonify({"message":"Login Successfull","token":access_token,"role":user.role,"name":user.name}),200
     else:
         return jsonify({"message":"Invalid Credientials"}),200
     

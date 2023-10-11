@@ -6,9 +6,12 @@
      <div>
         <ul>
             <li><a routerLink="/">Home</a></li>
-            <li><a routerLink="/login">Login</a></li>
-            <li><a routerLink="/signup">Signup</a></li>
+            <li *ngIf="!userAuthenticated"><a routerLink="/login">Login</a></li>
+            <li *ngIf="!userAuthenticated"><a routerLink="/signup">Signup</a></li>
+            <li *ngIf="userAuthenticated"><span><b>Welcome, </b>{{userName}}</span></li>
+            <button *ngIf="userAuthenticated" (click)="logoutUser()" type="submit" mat-raised-button color="warn">Logout</button>
           </ul>
+          
      </div>
     </nav>
   </header>

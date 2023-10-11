@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { catchError, map } from 'rxjs/operators'; // Import map and catchError operators
 import { NgForm } from '@angular/forms'; // Import NgForm
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
+import { LoggedinStatusService } from "../loggedin-status.service"
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -14,7 +14,7 @@ export class LoginComponent {
   email:string=''
   password:string=''
 
-  constructor(private http: HttpClient, private _snackBar: MatSnackBar,private router: Router) { }
+  constructor(private http: HttpClient, private _snackBar: MatSnackBar,private router: Router, private LoggedinStatusService:LoggedinStatusService ) { }
 
   openSnackBar(message: string, action: string) {
     this._snackBar.open(message, action, {
@@ -37,9 +37,30 @@ export class LoginComponent {
       (response) => {
 
         if((response as any).message=="Login Successfull"){
-          
+
+          sessionStorage.setItem('user_token', (response as any).token);
+
+          this.LoggedinStatusService.setUserName((response as any).name);
+          this.LoggedinStatusService.setUserAuthenticated(true);
+
           //redirect to dashboard
-          console.log(response as any)
+          const role = (response as any).role
+
+          if(role=="Admin"){
+            this.router.navigate(["/admin"])
+          }
+          else if(role=="Team Member"){
+            this.router.navigate(["/u"])
+          }
+          
+          else if(role=="Project Manager"){
+            
+            this.router.navigate(["/manager"])
+          }
+         else{
+          this.router.navigate(["/"])
+         }
+
         }
         this.openSnackBar((response as any).message,"CLOSE")
       },
