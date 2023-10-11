@@ -1,0 +1,39 @@
+<div class="signup-container">
+    <div class="signup-form">
+        <form #signupForm="ngForm" (ngSubmit)="onSignup(signupForm)">
+            <div>
+              <mat-form-field  class="signup-input">
+                <input matInput placeholder="Name" name="name"   ngModel>
+              </mat-form-field>
+            </div>
+          
+            <div>
+              <mat-form-field class="signup-input">
+                <input matInput placeholder="Email" name="email"  ngModel>
+              </mat-form-field>
+            </div>
+          
+            <div>
+              <mat-form-field class="signup-input">
+                <input matInput type="password" placeholder="Password"  name="password" ngModel>
+              </mat-form-field>
+            </div>
+          
+            <div>
+                <mat-form-field class="signup-input">
+                  <mat-select placeholder="Role" name="role" ngModel>
+                    <mat-option value="Admin">Admin</mat-option>
+                    <mat-option value="Project Manager">Project Manager</mat-option>
+                    <mat-option value="Team Member">Team Member</mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+          
+            <div> 
+              <button  type="submit" mat-raised-button color="primary">Sign Up</button>
+            </div>
+          </form>
+          
+          
+    </div>
+</div>

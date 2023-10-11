@@ -1,0 +1,31 @@
+header {
+    background-color: #673ab7;
+    color: #fff;
+    padding: 5px;
+    text-align: right;
+    margin-bottom: 3rem;
+}
+.header-logo {
+    font-size: 23px;
+    font-weight: bold;
+    margin-left: 5px;
+}
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 20px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #fff;
+}

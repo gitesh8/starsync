@@ -1,0 +1,9 @@
+.login-form {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.login-input{
+    width: 300px;
+}
