@@ -1,0 +1,50 @@
+<mat-drawer-container class="sidebar-container">
+    <mat-drawer mode="side" opened class="sidebar">
+        <div *ngIf="currentRole=='Admin'" class="sidebar">
+            <ul>
+                <div class="side-nav">
+                    <li><a routerLink="/admin">Home</a></li>
+                </div>
+                <div class="side-nav">
+                    <li><a routerLink="project/new">New Projects</a></li>
+                </div>
+                <div class="side-nav">
+                    <li><a routerLink="/about">Profile</a></li>
+                </div>
+                <div class="side-nav">
+                    <li><a routerLink="/about">All Project Managers</a></li>
+                </div>
+                <div class="side-nav">
+                    <li><a routerLink="/contact">All Team Memebers</a></li>
+                </div>
+            </ul>
+        </div>
+        <div *ngIf="currentRole=='Project Manager'" class="sidebar">
+            <ul>
+                <div class="side-nav">
+                    <li><a routerLink="/home">Profile</a></li>
+                </div>
+                <div class="side-nav">
+                    <li><a routerLink="/about">Assigned Projects</a></li>
+                </div>
+                <div class="side-nav">
+                    <li><a routerLink="/contact">All Team Members</a></li>
+                </div>
+            </ul>
+        </div>
+        <div *ngIf="currentRole=='Team Memeber'" class="sidebar">
+            <ul>
+                <div class="side-nav">
+                    <li><a routerLink="/home">Home</a></li>
+                </div>
+                <div class="side-nav">
+                    <li><a routerLink="/about">About</a></li>
+                </div>
+                <div class="side-nav">
+                    <li><a routerLink="/contact">Contact</a></li>
+                </div>
+            </ul>
+        </div>
+    </mat-drawer>
+    <mat-drawer-content><ng-content></ng-content></mat-drawer-content>
+</mat-drawer-container>

@@ -102,8 +102,8 @@ def create_project():
     if get_role()!="Admin":
         return jsonify({"message":"Not have permission to access this url"})
 
-    data = request.json()
-
+    data = request.get_json()
+    print(data)
     # userdetails
 
     name = data.get('name')
@@ -126,6 +126,7 @@ def create_project():
 
 # get all projects
 @app.route('/admin/projects', methods=['GET'])
+@jwt_required()
 def get_projects():
 
     # checking role

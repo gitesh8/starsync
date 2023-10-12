@@ -1,1 +1,11 @@
-<p>admin works!</p>
+<app-sidebar>
+   
+   <div class="admin-container">
+        <div class="container">
+            <div class="sub-container" *ngIf="tabName === 'AddProject'">
+                <app-new-project></app-new-project>
+            </div>
+        </div>
+   </div>
+   
+  </app-sidebar>

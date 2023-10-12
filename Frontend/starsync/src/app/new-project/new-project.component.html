@@ -1,0 +1,46 @@
+<div class="main-container">
+    <div class="new-project">
+        <form #newProjectFormData="ngForm" (ngSubmit)="newProject(newProjectFormData)">
+           
+            <div>
+              <mat-form-field class="new-project-input">
+                <input matInput placeholder="Project Name" name="projectname"  ngModel>
+              </mat-form-field>
+            </div>
+          
+            <div>
+              <mat-form-field class="new-project-input">
+                <input matInput type="text" placeholder="Description"  name="description" ngModel>
+              </mat-form-field>
+            </div>
+
+            <div>
+              <mat-form-field class="new-project-input">
+                <mat-label>Choose a StartDate</mat-label>
+                <mat-hint>MM/DD/YYYY</mat-hint>
+                <input matInput [matDatepicker]="picker" name="startdate">
+                <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+              </mat-form-field>
+            </div>
+
+            <div>
+              <mat-form-field class="new-project-input">
+                <mat-label>Choose a EndDate</mat-label>
+                <mat-hint>MM/DD/YYYY</mat-hint>
+                <input matInput [matDatepicker]="picker" name="enddate">
+                <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+              </mat-form-field>
+            </div>
+            
+          
+
+            <div> 
+              <button  type="submit" mat-raised-button color="primary">Login</button>
+            </div>
+          </form>
+          
+          
+    </div>
+</div>

@@ -1,0 +1,46 @@
+.sidebar {
+    width: 250px;
+    background-color: #333;
+    color: white;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar li {
+    padding: 10px;
+}
+
+.sidebar a {
+    text-decoration: none;
+    color: white;
+}
+.side-nav {
+    background-color: #ffffff17;
+    color: black;
+    margin-bottom: 16px;
+    width: 69%;
+    margin: auto;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.sidenav-container {
+    height: 100%;
+}
+
+.sidenav {
+    width: 250px;
+   
+    background-color: #333;
+   
+    color: #fff;
+  
+
+}
+.sidebar-container {
+    height: 100%;
+}
+  

@@ -11,9 +11,12 @@ const routes: Routes = [
   { path: 'signup', component: SignupComponent},
   { path: '', component:HomepageComponent},
   { path:'login', component:LoginComponent},
-  { path:'admin',component:AdminComponent},
-  { path:'u',component:TeamComponent},
-  { path:'manager',component:ManagerComponent}
+  { path:'admin',component:AdminComponent, data:{ComponentName: "Admin"}},
+  { path:'u',component:TeamComponent, data:{ComponentName: "Team"}},
+  { path:'manager',component:ManagerComponent, data:{ComponentName: "Manager"}},
+
+  // admin routes
+  {path:'admin/project/new',component:AdminComponent,data:{TabName: "AddProject"}}
 
 ];
 

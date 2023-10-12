@@ -20,6 +20,13 @@ import { LoginComponent } from './login/login.component';
 import { AdminComponent } from './admin/admin.component';
 import { TeamComponent } from './team/team.component';
 import { ManagerComponent } from './manager/manager.component';
+import { SidebarComponent } from './sidebar/sidebar.component';
+
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatIconModule } from '@angular/material/icon';
+import { NewProjectComponent } from './new-project/new-project.component'; 
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatNativeDateModule} from '@angular/material/core';
 
 
 @NgModule({
@@ -31,10 +38,14 @@ import { ManagerComponent } from './manager/manager.component';
     LoginComponent,
     AdminComponent,
     TeamComponent,
-    ManagerComponent
+    ManagerComponent,
+    SidebarComponent,
+    NewProjectComponent
   ],
   imports: [
     BrowserModule,
+    MatSidenavModule,
+    MatIconModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MatInputModule,
@@ -43,7 +54,9 @@ import { ManagerComponent } from './manager/manager.component';
     HttpClientModule,
     FormsModule,
     MatSelectModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatDatepickerModule,
+    MatNativeDateModule
 
 
   ],

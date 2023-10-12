@@ -39,9 +39,14 @@ export class LoginComponent {
         if((response as any).message=="Login Successfull"){
 
           sessionStorage.setItem('user_token', (response as any).token);
+          sessionStorage.setItem('user_role', (response as any).role);
+          sessionStorage.setItem('user_name', (response as any).name);
+          sessionStorage.setItem("user_authenticated", "true");
 
           this.LoggedinStatusService.setUserName((response as any).name);
           this.LoggedinStatusService.setUserAuthenticated(true);
+
+          console.log(response as any)
 
           //redirect to dashboard
           const role = (response as any).role

@@ -1,4 +1,4 @@
-import { Component, ChangeDetectorRef} from '@angular/core';
+import { Component, ChangeDetectorRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { LoggedinStatusService } from "../loggedin-status.service"
 
@@ -9,10 +9,10 @@ import { LoggedinStatusService } from "../loggedin-status.service"
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent {
-  userAuthenticated: boolean = false;
-  userName: string = '';
+  userAuthenticated: any = ''
+  userName: any = this.LoggedinStatusService.getUserName()
 
-  constructor(private cdr: ChangeDetectorRef, private router: Router, private LoggedinStatusService: LoggedinStatusService) {}
+  constructor(private cdr: ChangeDetectorRef, private router: Router, private LoggedinStatusService: LoggedinStatusService) { }
 
   ngOnInit() {
     this.LoggedinStatusService.userAuthenticated$.subscribe((userAuthenticated) => {
@@ -20,10 +20,12 @@ export class HeaderComponent {
       this.cdr.detectChanges();
     });
 
+
     this.LoggedinStatusService.userName$.subscribe((userName) => {
       this.userName = userName;
       this.cdr.detectChanges();
     });
+
   }
 
   logoutUser() {
