@@ -31,6 +31,8 @@ export class HeaderComponent {
   logoutUser() {
     this.LoggedinStatusService.setUserAuthenticated(false);
     this.LoggedinStatusService.setUserName('');
+
+    sessionStorage.clear()
     this.router.navigate(['/login']);
   }
 }

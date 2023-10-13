@@ -52,7 +52,7 @@ export class LoginComponent {
           const role = (response as any).role
 
           if(role=="Admin"){
-            this.router.navigate(["/admin"])
+            this.router.navigate(["/admin/dashboard"])
           }
           else if(role=="Team Member"){
             this.router.navigate(["/u"])
@@ -60,7 +60,7 @@ export class LoginComponent {
           
           else if(role=="Project Manager"){
             
-            this.router.navigate(["/manager"])
+            this.router.navigate(["/manager/projects"])
           }
          else{
           this.router.navigate(["/"])

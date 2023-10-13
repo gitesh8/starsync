@@ -1,0 +1,11 @@
+<div class="card-container">
+  <mat-card *ngFor="let p of allProjects" >
+    <mat-card-content class="show-project-field" style="text-align: center;"><h2>{{p.name}}</h2></mat-card-content>
+    <mat-card-content class="show-project-field"><b style="font-size: 16px;">Status: </b>{{p.project_status}}</mat-card-content>
+    <mat-card-content class="show-project-field"><b style="font-size: 16px;">Description: </b>{{p.description}}</mat-card-content>
+    <mat-card-content class="show-project-field"><b style="font-size: 16px;">Start Date: </b>{{p.start_date}}</mat-card-content>
+    <mat-card-content class="show-project-field"><b style="font-size: 16px;">End Date: </b>{{p.start_date}}</mat-card-content>
+    <mat-card-content class="show-project-field"><b style="font-size: 16px;">Assign Manager: </b>{{p.project_manager_name}}</mat-card-content>
+  </mat-card>
+</div>
+  

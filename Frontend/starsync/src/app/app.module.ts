@@ -27,6 +27,11 @@ import { MatIconModule } from '@angular/material/icon';
 import { NewProjectComponent } from './new-project/new-project.component'; 
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material/core';
+import { AllProjectsComponent } from './all-projects/all-projects.component';
+import {MatCardModule} from '@angular/material/card';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { ManagerProjectsComponent } from './manager-projects/manager-projects.component';
+import { TeamMembersComponent } from './team-members/team-members.component';
 
 
 @NgModule({
@@ -40,7 +45,11 @@ import {MatNativeDateModule} from '@angular/material/core';
     TeamComponent,
     ManagerComponent,
     SidebarComponent,
-    NewProjectComponent
+    NewProjectComponent,
+    AllProjectsComponent,
+    DashboardComponent,
+    ManagerProjectsComponent,
+    TeamMembersComponent
   ],
   imports: [
     BrowserModule,
@@ -56,7 +65,8 @@ import {MatNativeDateModule} from '@angular/material/core';
     MatSelectModule,
     MatSnackBarModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    MatCardModule
 
 
   ],

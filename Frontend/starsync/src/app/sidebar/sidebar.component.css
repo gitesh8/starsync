@@ -1,6 +1,6 @@
 .sidebar {
     width: 250px;
-    background-color: #333;
+    background-color: #260065;
     color: white;
 }
 
@@ -15,16 +15,20 @@
 
 .sidebar a {
     text-decoration: none;
-    color: white;
+   color: black;
+   font-weight: 600;
 }
 .side-nav {
-    background-color: #ffffff17;
+    background-color: #f5f5fd;
     color: black;
     margin-bottom: 16px;
-    width: 69%;
+    width: 74%;
     margin: auto;
     margin-bottom: 20px;
+    /* margin-left: 20px; */
     text-align: center;
+    box-shadow: rgb(0 0 0 / 56%) 0px 6px 11px 4px;
+    border-radius: 6px;
 }
 
 .sidenav-container {
@@ -43,4 +47,7 @@
 .sidebar-container {
     height: 100%;
 }
-  
+.mat-drawer.mat-drawer-side {
+    z-index: 2;
+    box-shadow: rgb(0 0 0 / 98%) 0px 5px 8px;
+}

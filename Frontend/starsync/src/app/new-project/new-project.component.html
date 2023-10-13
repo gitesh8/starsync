@@ -1,6 +1,6 @@
 <div class="main-container">
     <div class="new-project">
-        <form #newProjectFormData="ngForm" (ngSubmit)="newProject(newProjectFormData)">
+        <form #newProjectFormData="ngForm"  (ngSubmit)="newProject(newProjectFormData)">
            
             <div>
               <mat-form-field class="new-project-input">
@@ -10,7 +10,7 @@
           
             <div>
               <mat-form-field class="new-project-input">
-                <input matInput type="text" placeholder="Description"  name="description" ngModel>
+                <textarea matInput type="text" placeholder="Description"  name="description" ngModel></textarea>
               </mat-form-field>
             </div>
 
@@ -18,26 +18,37 @@
               <mat-form-field class="new-project-input">
                 <mat-label>Choose a StartDate</mat-label>
                 <mat-hint>MM/DD/YYYY</mat-hint>
-                <input matInput [matDatepicker]="picker" name="startdate">
-                <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-                <mat-datepicker #picker></mat-datepicker>
+                <input matInput [matDatepicker]="startDatePicker" name="startdate" ngModel>
+                <mat-datepicker-toggle matIconSuffix [for]="startDatePicker"></mat-datepicker-toggle>
+                <mat-datepicker #startDatePicker></mat-datepicker>
               </mat-form-field>
             </div>
 
             <div>
               <mat-form-field class="new-project-input">
-                <mat-label>Choose a EndDate</mat-label>
+                <mat-label>Choose an EndDate</mat-label>
                 <mat-hint>MM/DD/YYYY</mat-hint>
-                <input matInput [matDatepicker]="picker" name="enddate">
-                <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-                <mat-datepicker #picker></mat-datepicker>
+                <input matInput [matDatepicker]="endDatePicker" name="enddate" ngModel>
+                <mat-datepicker-toggle matIconSuffix [for]="endDatePicker"></mat-datepicker-toggle>
+                <mat-datepicker #endDatePicker></mat-datepicker>
               </mat-form-field>
             </div>
+
+            <div>
+              <mat-form-field class="new-project-input">
+                <mat-label>Choose a Project Manager</mat-label>
+                <mat-select name="projectmanager" ngModel>
+                  <mat-option *ngFor="let item of projectManagers" [value]="item.id" >
+                    {{  item.name }}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+
             
-          
 
             <div> 
-              <button  type="submit" mat-raised-button color="primary">Login</button>
+              <button  type="submit" mat-raised-button color="primary">Create</button>
             </div>
           </form>
           

@@ -1,1 +1,12 @@
-<app-sidebar></app-sidebar>
+<app-sidebar>
+   
+    <div class="manager-container">
+         <div class="container">
+             <div class="sub-container" *ngIf="tabName === 'AssignProjects'">
+                 <app-manager-projects></app-manager-projects>
+             </div>
+             
+         </div>
+    </div>
+    
+   </app-sidebar>

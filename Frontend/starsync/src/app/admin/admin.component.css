@@ -1,6 +1,7 @@
 .admin-container {
     display: flex;
     align-items: center;
-    justify-content: center;
-    margin-top: 4rem;
+    justify-content: flex-start;
+    margin-top: 2rem;
+    margin-left: 1rem;
 }

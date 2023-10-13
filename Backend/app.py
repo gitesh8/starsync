@@ -1,6 +1,7 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_bcrypt import Bcrypt
+from datetime import timedelta
 from flask_migrate import Migrate
 from flask_cors import CORS
 from flask_jwt_extended import (
@@ -35,6 +36,7 @@ migrate = Migrate(app, db)
 
 # jwt configurations
 app.config['JWT_SECRET_KEY'] = os.getenv("jwt_secret_key")
+app.config['JWT_ACCESS_TOKEN_EXPIRES'] = timedelta(hours=24)  # Adjust the token expiration as needed
 jwt = JWTManager(app)
 
 # importing route

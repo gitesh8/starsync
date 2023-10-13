@@ -1,0 +1,19 @@
+.card-container {
+    display: flex;
+    width: 100%;
+    gap: 20px;
+    align-items: center;
+    text-align: center;
+}
+.show-project-field {
+    margin: 26px 0px;
+    font-size: 40px;
+    font-weight: bold;
+}
+.mat-mdc-card {
+    position: relative;
+    width: 250px;
+}
+.mat-mdc-card-header{
+    justify-content: center;
+}

@@ -1,0 +1,12 @@
+.card-container {
+    display: flex;
+    width: 94%;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    gap: 18px;
+}
+.show-project-field {
+    margin-bottom: 13px;
+    height: 32px;
+}

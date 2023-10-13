@@ -1,0 +1,15 @@
+.card-container {
+    display: flex;
+    width: 94%;
+    align-items: center;
+    margin: auto;
+    gap: 18px;
+}
+.show-project-field {
+    margin-bottom: 13px;
+    height: 32px;
+}
+.mat-mdc-card {
+    position: relative;
+    width: 250px;
+}

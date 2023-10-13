@@ -8,7 +8,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class AdminComponent implements OnInit{
 
- tabName:any= ""
+ tabName:any= "Dashboard"
 
  constructor(private route:ActivatedRoute){
 

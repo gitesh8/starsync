@@ -16,8 +16,13 @@ const routes: Routes = [
   { path:'manager',component:ManagerComponent, data:{ComponentName: "Manager"}},
 
   // admin routes
-  {path:'admin/project/new',component:AdminComponent,data:{TabName: "AddProject"}}
+  {path:'admin/project/new',component:AdminComponent,data:{TabName: "AddProject"}},
+  {path:'admin/projects',component:AdminComponent,data:{TabName: "AllProject"}},
+  {path:'admin/dashboard',component:AdminComponent,data:{TabName: "Dashboard"}},
 
+
+  // manager routes
+  {path:'manager/projects',component:ManagerComponent,data:{TabName: "AssignProjects"}},
 ];
 
 @NgModule({
