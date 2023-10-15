@@ -6,3 +6,4 @@ Flask-Cors
 Flask-JWT-Extended
 mysqlclient==2.1.1
 python-dotenv
+gunicorn
