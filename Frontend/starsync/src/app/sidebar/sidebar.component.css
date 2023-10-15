@@ -1,12 +1,13 @@
 .sidebar {
     width: 250px;
-    background-color: #260065;
+    background:linear-gradient(199deg, #007be6, #006cc9);
     color: white;
 }
 
 .sidebar ul {
     list-style: none;
     padding: 0;
+     background:#0077df;
 }
 
 .sidebar li {
@@ -22,13 +23,14 @@
     background-color: #f5f5fd;
     color: black;
     margin-bottom: 16px;
+    display: flex;
     width: 74%;
     margin: auto;
     margin-bottom: 20px;
-    /* margin-left: 20px; */
     text-align: center;
-    box-shadow: rgb(0 0 0 / 56%) 0px 6px 11px 4px;
     border-radius: 6px;
+    justify-content: center;
+    align-items: center;
 }
 
 .sidenav-container {

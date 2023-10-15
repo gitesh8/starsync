@@ -12,7 +12,7 @@ const routes: Routes = [
   { path: '', component:HomepageComponent},
   { path:'login', component:LoginComponent},
   { path:'admin',component:AdminComponent, data:{ComponentName: "Admin"}},
-  { path:'u',component:TeamComponent, data:{ComponentName: "Team"}},
+  { path:'team',component:TeamComponent, data:{ComponentName: "Team"}},
   { path:'manager',component:ManagerComponent, data:{ComponentName: "Manager"}},
 
   // admin routes
@@ -23,6 +23,11 @@ const routes: Routes = [
 
   // manager routes
   {path:'manager/projects',component:ManagerComponent,data:{TabName: "AssignProjects"}},
+  {path:'manager/team',component:ManagerComponent,data:{TabName: "Team"}},
+  {path:'manager/projects/:id',component:ManagerComponent,data:{TabName: "ProjectEdit"}},
+
+  // team route
+  {path:'team/dashboard',component:TeamComponent,data:{TabName: "AllTasks"}},
 ];
 
 @NgModule({

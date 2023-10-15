@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { catchError, map } from 'rxjs/operators'; // Import map and catchError operators
+import { environment } from 'src/config.environment';
 import { NgForm } from '@angular/forms'; // Import NgForm
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
@@ -11,6 +11,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./signup.component.css']
 })
 export class SignupComponent {
+
+  baseApiurl=environment.apiBaseUrl;
 
   name: string = '';
   email: string = '';
@@ -28,7 +30,7 @@ export class SignupComponent {
 
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
 
-    const url = "http://127.0.0.1:5000/register"
+    const url = `${this.baseApiurl}register`
 
     const singupDetails={
       email:signupForm.value.email,

@@ -4,19 +4,16 @@
         <div *ngIf="currentRole=='Admin'" class="sidebar">
             <ul>
                 <div class="side-nav">
+                  <div><mat-icon>dashboard</mat-icon></div>
                   <li><a [routerLink]="'/admin/dashboard'">Dashboard</a></li>
                 </div>
                 <div class="side-nav">
+                  <div><mat-icon>add</mat-icon></div>
                   <li><a [routerLink]="'/admin/project/new'">New Projects</a></li>
                 </div>
                 <div class="side-nav">
+                  <div><mat-icon>view_list</mat-icon></div>
                   <li><a [routerLink]="'/admin/projects'">Show All Projects</a></li>
-                </div>
-                <div class="side-nav">
-                  <li><a [routerLink]="'/admin/managers'">All Project Managers</a></li>
-                </div>
-                <div class="side-nav">
-                  <li><a [routerLink]="'/admin/teams'">All Team Members</a></li>
                 </div>
               </ul>
               
@@ -24,23 +21,20 @@
         <div *ngIf="currentRole=='Project Manager'" class="sidebar">
             <ul>
               <div class="side-nav">
+                <div><mat-icon>dashboard</mat-icon></div>
                 <li><a [routerLink]="'/manager/projects'">Dashboard</a></li>
               </div>
               <div class="side-nav">
+                <div><mat-icon>group</mat-icon></div>
                 <li><a [routerLink]="'/manager/team'">Team Members</a></li>
               </div>
             </ul>
         </div>
-        <div *ngIf="currentRole=='Team Memeber'" class="sidebar">
+        <div *ngIf="currentRole=='Team Member'" class="sidebar">
             <ul>
                 <div class="side-nav">
-                    <li><a routerLink="/home">Home</a></li>
-                </div>
-                <div class="side-nav">
-                    <li><a routerLink="/about">About</a></li>
-                </div>
-                <div class="side-nav">
-                    <li><a routerLink="/contact">Contact</a></li>
+                  <div><mat-icon>dashboard</mat-icon></div>
+                  <li><a [routerLink]="'/team/dashboard'">Dashboard</a></li>
                 </div>
             </ul>
         </div>

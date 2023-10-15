@@ -1,1 +1,11 @@
-<app-sidebar></app-sidebar>
+<app-sidebar>
+   
+    <div class="team-container">
+         <div class="container">
+             <div class="sub-container" *ngIf="tabName === 'AllTasks'">
+                <app-task-details></app-task-details>
+             </div>
+         </div>
+    </div>
+    
+   </app-sidebar>

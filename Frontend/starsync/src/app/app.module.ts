@@ -32,6 +32,11 @@ import {MatCardModule} from '@angular/material/card';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ManagerProjectsComponent } from './manager-projects/manager-projects.component';
 import { TeamMembersComponent } from './team-members/team-members.component';
+import { ProjectEditComponent } from './project-edit/project-edit.component';
+import { AddTaskComponent } from './add-task/add-task.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { TaskDetailsComponent } from './task-details/task-details.component';
+
 
 
 @NgModule({
@@ -49,7 +54,10 @@ import { TeamMembersComponent } from './team-members/team-members.component';
     AllProjectsComponent,
     DashboardComponent,
     ManagerProjectsComponent,
-    TeamMembersComponent
+    TeamMembersComponent,
+    ProjectEditComponent,
+    AddTaskComponent,
+    TaskDetailsComponent
   ],
   imports: [
     BrowserModule,
@@ -66,7 +74,9 @@ import { TeamMembersComponent } from './team-members/team-members.component';
     MatSnackBarModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    MatCardModule
+    MatCardModule,
+    MatIconModule,
+    MatDialogModule
 
 
   ],

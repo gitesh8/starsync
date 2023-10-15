@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-team',
@@ -7,4 +8,12 @@ import { Component } from '@angular/core';
 })
 export class TeamComponent {
 
+  tabName:any= "Dashboard"
+
+ constructor(private route:ActivatedRoute){ }
+ ngOnInit() {
+  this.route.data.subscribe(data => {
+    this.tabName = data['TabName'];
+  });
+}
 }

@@ -1,6 +1,7 @@
 import { Component,OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
+
 @Component({
   selector: 'app-manager',
   templateUrl: './manager.component.html',
@@ -15,5 +16,7 @@ export class ManagerComponent implements OnInit {
   this.route.data.subscribe(data => {
     this.tabName = data['TabName'];
   });
+
  }
+
 }

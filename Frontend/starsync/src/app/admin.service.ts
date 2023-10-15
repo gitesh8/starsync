@@ -4,16 +4,17 @@ import { Observable } from 'rxjs';
 import { LoggedinStatusService } from './loggedin-status.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { NgForm } from '@angular/forms';
+import { environment } from 'src/config.environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AdminService {
 
-  
+  apiBaseUrl = environment.apiBaseUrl;
 
   constructor(private http: HttpClient, private loggedinStatusService:LoggedinStatusService, private _snackBar: MatSnackBar) { }
-  private token = this.loggedinStatusService.getCurrentToken()
+  public token = this.loggedinStatusService.getCurrentToken()
 
   openSnackBar(message: string, action: string) {
     this._snackBar.open(message, action, {
@@ -22,7 +23,7 @@ export class AdminService {
 
   getProjectManager(): Observable<any[]> {
 
-    const apiUrl:string = 'http://127.0.0.1:5000/admin/get-all-project-managers';
+    const apiUrl:string =  `${this.apiBaseUrl}admin/get-all-project-managers`;
 
     // Replace 'your_token_here' with the actual authorization bearer token
     const headers = new HttpHeaders().set('Authorization', 'Bearer '+this.token);
@@ -74,7 +75,7 @@ export class AdminService {
 
   getAllProjects(): Observable<any[]>{
 
-    const apiUrl:string = 'http://127.0.0.1:5000/admin/projects';
+    const apiUrl:string = `${this.apiBaseUrl}admin/projects`;
 
      // Replace 'your_token_here' with the actual authorization bearer token
      const headers = new HttpHeaders().set('Authorization', 'Bearer '+this.token);
@@ -83,7 +84,7 @@ export class AdminService {
   }
 
   adminDashboard(){
-    const apiUrl:string='http://127.0.0.1:5000/admin/dashboard'
+    const apiUrl:string=`${this.apiBaseUrl}admin/dashboard`
 
      // Replace 'your_token_here' with the actual authorization bearer token
      const headers = new HttpHeaders().set('Authorization', 'Bearer '+this.token);

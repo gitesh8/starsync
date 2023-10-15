@@ -4,6 +4,11 @@ import { NgForm } from '@angular/forms'; // Import NgForm
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { LoggedinStatusService } from "../loggedin-status.service"
+import { environment } from 'src/config.environment';
+import { ChangeDetectorRef } from '@angular/core';
+import { ManagerService } from '../manager.service';
+import { AdminService } from '../admin.service';
+import { TeamService } from '../team.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -11,10 +16,12 @@ import { LoggedinStatusService } from "../loggedin-status.service"
 })
 export class LoginComponent {
 
+  baseApiUrl=environment.apiBaseUrl;
+
   email:string=''
   password:string=''
 
-  constructor(private http: HttpClient, private _snackBar: MatSnackBar,private router: Router, private LoggedinStatusService:LoggedinStatusService ) { }
+  constructor(private http: HttpClient, private _snackBar: MatSnackBar,private router: Router, private LoggedinStatusService:LoggedinStatusService, private cdr:ChangeDetectorRef, private managerService:ManagerService, private adminService:AdminService,private TeamService:TeamService) { }
 
   openSnackBar(message: string, action: string) {
     this._snackBar.open(message, action, {
@@ -23,7 +30,7 @@ export class LoginComponent {
 
   onLogin(loginForm: NgForm) {
 
-    const url:string = "http://127.0.0.1:5000/login"
+    const url:string = `${this.baseApiUrl}login`
 
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
 
@@ -38,6 +45,8 @@ export class LoginComponent {
 
         if((response as any).message=="Login Successfull"){
 
+          sessionStorage.clear()
+
           sessionStorage.setItem('user_token', (response as any).token);
           sessionStorage.setItem('user_role', (response as any).role);
           sessionStorage.setItem('user_name', (response as any).name);
@@ -45,6 +54,12 @@ export class LoginComponent {
 
           this.LoggedinStatusService.setUserName((response as any).name);
           this.LoggedinStatusService.setUserAuthenticated(true);
+        
+          this.managerService.token=(response as any).token;
+          this.adminService.token=(response as any).token;
+          this.TeamService.token=(response as any).token;
+
+          this.cdr.detectChanges()
 
           console.log(response as any)
 
@@ -55,7 +70,7 @@ export class LoginComponent {
             this.router.navigate(["/admin/dashboard"])
           }
           else if(role=="Team Member"){
-            this.router.navigate(["/u"])
+            this.router.navigate(["/team/dashboard"])
           }
           
           else if(role=="Project Manager"){

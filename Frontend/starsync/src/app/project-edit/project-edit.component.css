@@ -1,0 +1,15 @@
+.tasks-container {
+    display: flex;
+    flex-direction: row;
+    gap: 17px;
+    margin-top: 26px;
+    width: 100%;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.mat-mdc-card {
+    position: relative;
+    gap: 15px;
+    padding: 10px;
+}

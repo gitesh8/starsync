@@ -1,5 +1,5 @@
 header {
-    background-color: #260065;
+    background-color: #007be6;
     color: #fff;
     padding: 0px 11px;
     text-align: right;
@@ -8,6 +8,9 @@ header {
     font-size: 23px;
     font-weight: bold;
     margin-left: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 nav {
     display: flex;
@@ -27,4 +30,7 @@ nav ul li {
 nav ul li a {
     text-decoration: none;
     color: #fff;
+}
+.header-logo-1 {
+    width: 30%;
 }

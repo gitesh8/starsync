@@ -1,0 +1,37 @@
+<h2 style="font-size: 22px;text-align: center;">Project Details</h2>
+<div *ngIf="projectData" class="project-header">
+    <mat-card>
+      <mat-card-header  style="margin-bottom: 10px;">
+        <mat-card-title>{{ projectData.project.name }}</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <p style="display: inline-block; font-size: 15px; margin-right: 1rem;"><strong>Project ID:</strong>  {{ projectData.project.id }}</p>
+        <p style="display: inline-block; font-size: 15px; margin-right: 1rem;"><strong>Description:</strong> {{ projectData.project.description }}</p>
+        <p style="display: inline-block; font-size: 15px; margin-right: 1rem;"><strong>Start Date:</strong> {{ projectData.project.start_date }}</p>
+        <p style="display: inline-block; font-size: 15px; margin-right: 1rem;"><strong>End Date:</strong> {{ projectData.project.end_date }}</p>
+        <p style="display: inline-block; font-size: 15px; margin-right: 1rem;"><strong>Status:</strong> {{ projectData.project.project_status }}</p>
+      </mat-card-content>
+      <mat-card-content>
+        <button type="submit" (click)="openTaskFormModal(projectData.project.id)" mat-raised-button color="primary" style="margin-right: 10px;">Add Task<mat-icon>add</mat-icon></button>
+        <button type="submit" *ngIf="projectData.project.project_status==='Completed'" (click)="updateProjectStatus(projectData.project.id,'Pending')" style="background-color: orange;margin-right: 10px;"  mat-raised-button color="primary">Mark as Pending<mat-icon>add</mat-icon></button>
+        <button type="submit" *ngIf="projectData.project.project_status==='Pending'"  (click)="updateProjectStatus(projectData.project.id,'Completed')" style="background-color: green;margin-right: 10px;" mat-raised-button color="primary">Mark as Completed<mat-icon>add</mat-icon></button>
+        
+      </mat-card-content>
+    </mat-card>
+</div>    
+<h2 style="font-size: 22px;text-align: center;margin-top: 10px;">Tasks</h2>
+<div class="tasks-container">
+    <mat-card *ngFor="let task of projectData.tasks" class="task-card">
+      <mat-card-content>
+        <p><strong>Task ID:</strong> {{ task.task_id }}</p>
+        <p><strong>Task:</strong> {{ task.name }}</p>
+        <p><strong>Team Member Name:</strong> {{ task.member_name }}</p>
+        <p><strong>Due Date:</strong> {{ task.due_date }}</p>
+        <p><strong>Priority:</strong> {{ task.priority }}</p>
+        <p><strong>Status:</strong> {{ task.status }}</p>
+        <p><strong>Team Member Email:</strong> {{ task.user_email }}</p>
+      </mat-card-content>
+    </mat-card>
+</div>  
+    
+  

@@ -1,0 +1,11 @@
+.task-container {
+    display: flex;
+    flex-direction: row;
+    gap: 36px;
+    flex-wrap: wrap;
+    margin: 27px 17px;
+    margin-top: 11pxrem;
+}
+mat-card-content.mat-mdc-card-content>div {
+    margin-bottom: 10px;
+}

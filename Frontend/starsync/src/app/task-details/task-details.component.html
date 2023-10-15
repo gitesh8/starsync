@@ -1,0 +1,33 @@
+<div class="task-container">
+
+   <div *ngIf="task.length==0">
+    <h2 ><b>It looks like no tasks have been assigned to you.</b></h2>
+   </div>
+    <div *ngFor="let task of task" class="container">
+        <mat-card>
+          <mat-card-content>
+            <div>
+              <strong>Task Name:</strong> {{ task.task_name }}
+            </div>
+            <div>
+              <strong>Due Date:</strong> {{ task.due_date }}
+            </div>
+            <div>
+              <strong>Priority:</strong> {{ task.priority }}
+            </div>
+            <div>
+              <strong>Project Manager:</strong> {{ task.project_manager_name }}
+            </div>
+            <div>
+              <strong>Project Name:</strong> {{ task.project_name }}
+            </div>
+            <div>
+              <strong>Status:</strong> {{ task.status }}
+            </div>
+          </mat-card-content>
+          <mat-card-content><button (click)="updateStatus(task.taskid,'Completed')" *ngIf="task.status==='Pending'" type="submit" style="background: green;"  mat-raised-button color="primary">Mark as Completed<mat-icon>check_circle</mat-icon></button></mat-card-content>
+          <mat-card-content><button (click)="updateStatus(task.taskid,'Pending')"*ngIf="task.status==='Completed'" type="submit" style="background: orange;" mat-raised-button color="primary">Mark as Pending<mat-icon>schedule</mat-icon></button></mat-card-content>
+        </mat-card>
+      </div>
+</div>
+  

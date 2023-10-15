@@ -1,0 +1,39 @@
+<div class="add-task">
+    <h2>Assign Task</h2>
+    <form #taskForm="ngForm" (ngSubmit)="submitForm()">
+        <mat-form-field class="add-task-input">
+            <input matInput placeholder="Task Name" [(ngModel)]="task.name" name="taskName" required>
+        </mat-form-field>
+
+
+        <mat-form-field class="add-task-input">
+            <mat-label>Choose a Duedate</mat-label>
+            <mat-hint>MM/DD/YYYY</mat-hint>
+            <input matInput [matDatepicker]="startDatePicker" name="startdate" [(ngModel)]="task.due_date"
+                name="dueDate">
+            <mat-datepicker-toggle matIconSuffix [for]="startDatePicker"></mat-datepicker-toggle>
+            <mat-datepicker #startDatePicker></mat-datepicker>
+        </mat-form-field>
+ 
+        <mat-form-field class="add-task-input">
+
+            <mat-label>Priorities</mat-label>
+            <mat-select matNativeControl [(ngModel)]="task.priority" name="priorities" required>
+                <mat-option value="High">High</mat-option>
+                <mat-option value="Medium">Medium</mat-option>
+                <mat-option value="Low">Low</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field class="add-task-input">
+            <mat-label>Choose Team Member</mat-label>
+            <mat-select [(ngModel)]="task.user_id" name="teamMember" ngModel>
+                <mat-option *ngFor="let item of team" [value]="item.id">
+                    {{ item.name }}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <button mat-raised-button color="primary" type="submit">Submit</button>
+    </form>
+</div>

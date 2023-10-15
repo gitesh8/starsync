@@ -255,6 +255,27 @@ def getAllProjectManagers():
 
 #------------------------------------------------- admin section -------------------------------------------
 #------------------------------- Project Manager section --------------------------------------------------
+#update project status
+@app.route('/manager/project/<int:project_id>/update-status/<string:status>', methods=['GET'])
+@jwt_required()
+def update_project_status(project_id,status):
+    
+    user_id = get_jwt_identity()
+
+     # checking role
+    if get_role()!="Project Manager":
+        return jsonify({"message":"Not have permission to access this url"}),200
+    
+    project =  Project.query.filter_by(id=project_id).first()
+
+    if  project.project_manager_id==user_id:
+        project.project_status=status
+        db.session.commit()
+
+        return jsonify({"message":"Project Status Updated to "+status}),200
+    else:
+        return jsonify({"message":"Project Not Belongs to You"}),200
+     
 # list of team members
 @app.route("/manager/team-members",methods=["GET"])
 @jwt_required()
@@ -276,11 +297,11 @@ def getAllTeamMembers():
         }
         project_managers.append(data)
 
-    return jsonify({"projectManagers":project_managers})   
+    return jsonify({"team":project_managers})   
 
 @app.route('/manager/projects', methods=['GET'])
 @jwt_required()
-def get_projects_assigned_to_user():
+def get_projects_assigned_to_Manager():
 
      # checking role
     if get_role()!="Project Manager":
@@ -310,39 +331,159 @@ def get_projects_assigned_to_user():
 @jwt_required()
 def add_tasks():
 
-         # checking role
+    # checking role
     if get_role()!="Project Manager":
         return jsonify({"message":"Not have permission to access this url"})
     
-    #current users id
-    user_id = get_jwt_identity()
+   
+    data = request.get_json()
+    user_id = data.get('user_id') 
+
+    # Check if the project_id is present in the request data
+    project_id = data.get('project_id') 
+
+    # Check if the project exists
+    project = Project.query.get(project_id)
+    if not project:
+        return jsonify({'message': 'Project not found'}), 200
+
+    # Validate and retrieve user data
+
+    user = User.query.filter_by(id=user_id, role="Team Member").first()
+    if not user:
+        return jsonify({'message': 'User not found'}), 200
+
+    # Create a new task
+    task = Task(
+        project_id=project_id,
+        user_id=user_id,
+        status=data.get('status', 'Pending'),
+        due_date=data.get('due_date'),
+        priority=data.get('priority'),
+        name = data.get('name')
+    )
+
+    # updating project status to pending
+    project.project_status="Pending"
+
+    db.session.add(task)
+    db.session.commit()
 
     try:
-        data = request.get_json()
-        project_id = data.get('project_id')
-        tasks = data.get.get('tasks', [])
-        
-        # Check if the project exists
-        project = Project.query.get(project_id)
-        if not project:
-            return jsonify({'message': 'Project not found'}), 404
-
-        for task_data in tasks:
-            user_id = task_data.get('user_id')
-            status = task_data.get('status', 'New')
-            due_date = task_data.get('due_date', None)
-            priority = task_data.get('priority', None)
-
-            # Check if the user exists
-            user = User.query.get(user_id)
-            if not user:
-                return jsonify({'message': 'User not found'}), 404
-
-            task = Task(project_id=project_id, user_id=user_id, status=status, due_date=due_date, priority=priority)
-            db.session.add(task)
-
         db.session.commit()
-
-        return jsonify({'message': 'Tasks added successfully'}), 201
+        return jsonify({'message': 'Task Assigned Successfully'}), 201
     except Exception as e:
         return jsonify({'message': 'Error: ' + str(e)}), 500
+    
+#getting task details with project id
+@app.route('/manager/projects/tasks/<int:project_id>', methods=['GET'])
+@jwt_required()
+def get_tasks_by_project(project_id):
+
+     # checking role
+    if get_role()!="Project Manager":
+        return jsonify({"message":"Not have permission to access this url"}),200
+
+    # Check if the project exists
+    project = Project.query.get(project_id)
+    if not project:
+        return jsonify({'message': 'Project not found'}), 404
+
+    # Query tasks related to the specific project
+    tasks = Task.query.filter_by(project_id=project_id).all()
+
+    task_details = []
+    project_details={
+        'id': project.id,
+        "name":project.name,
+        'description': project.description,
+        'start_date': project.start_date.strftime('%Y-%m-%d'),
+        'end_date': project.end_date.strftime('%Y-%m-%d'),
+        'project_status':project.project_status
+
+    }
+
+    for task in tasks:
+        # Retrieve user details associated with the task
+        user = User.query.get(task.user_id)
+
+
+        task_info = {
+            'task_id': task.id,
+            'name':task.name,
+            'status': task.status,
+            'due_date': task.due_date.strftime('%Y-%m-%d'),
+            'priority': task.priority,
+            'member_name': user.name,
+            'user_email': user.email
+        }
+        task_details.append(task_info)  
+
+    return jsonify({"tasks":task_details,"project":project_details}),200    
+
+# -------------------------- Team Member----------------------------------------
+@app.route('/team/tasks', methods=['GET'])
+@jwt_required()
+def get_user_tasks():
+    user_id = get_jwt_identity()
+
+     # checking role
+    if get_role()!="Team Member":
+        return jsonify({"message":"Not have permission to access this url"}),200
+    
+    try:
+        # Find the user by ID and check if the role is 'Team Member'
+        user = User.query.filter_by(id=user_id, role='Team Member').first()
+
+        if not user:
+            return jsonify({'error': 'User not found or not a Team Member'}), 200
+
+        # Find tasks assigned to the user
+        tasks = Task.query.filter_by(user_id=user.id).all()
+
+        if not tasks:
+            return jsonify({'message': 'No tasks found for the user'}), 200
+
+        # Get the project names, project manager names, due date, and priority for each task
+        task_details = []
+        for task in tasks:
+            project = Project.query.filter_by(id=task.project_id).first()
+            project_manager = User.query.filter_by(id=project.project_manager_id).first()
+
+            if project.project_status!="Completed":
+                task_details.append({
+                'taskid':task.id,
+                'task_name': task.name,
+                'project_name': project.name,
+                'project_manager_name': project_manager.name,
+                'due_date': task.due_date.strftime('%Y-%m-%d'),  
+                'priority': task.priority,
+                "status":task.status
+            })
+            
+
+        return jsonify({'tasks': task_details}), 200
+
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+    
+@app.route('/team/tasks/<int:task_id>/update-status/<string:status>', methods=['GET'])
+@jwt_required()
+def update_task_task(task_id,status):
+    
+    user_id = get_jwt_identity()
+
+     # checking role
+    if get_role()!="Team Member":
+        return jsonify({"message":"Not have permission to access this url"}),200
+    
+    task =  Task.query.filter_by(id=task_id).first()
+
+    if task.user_id==user_id:
+        task.status=status
+        db.session.commit()
+
+        return jsonify({"message":"Task Status Updated to "+status}),200
+    else:
+        return jsonify({"message":"Task Not Belongs to You"}),200
+     

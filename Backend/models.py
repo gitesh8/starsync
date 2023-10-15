@@ -29,3 +29,4 @@ class Task(db.Model):
     status = db.Column(db.String(20), nullable=False, default='New')
     due_date = db.Column(db.Date, nullable=True)
     priority = db.Column(db.String(20), nullable=True)
+    name = db.Column(db.String(100), nullable=False)

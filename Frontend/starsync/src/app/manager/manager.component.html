@@ -5,7 +5,12 @@
              <div class="sub-container" *ngIf="tabName === 'AssignProjects'">
                  <app-manager-projects></app-manager-projects>
              </div>
-             
+             <div class="sub-container" *ngIf="tabName === 'Team'">
+                <app-team-members></app-team-members>
+            </div>
+            <div class="sub-container" *ngIf="tabName === 'ProjectEdit'">
+                <app-project-edit></app-project-edit>
+            </div>
          </div>
     </div>
     

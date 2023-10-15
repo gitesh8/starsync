@@ -1,1 +1,8 @@
-<p>team-members works!</p>
+<div class="card-container">
+    <mat-card *ngFor="let t of team" >
+      <mat-card-content class="show-project-field" style="text-align: center;"><h2><b>Name: </b>{{t.name}}</h2></mat-card-content>
+      <mat-card-content class="show-project-field"><b style="font-size: 16px;margin-top: 5px;">Email: </b>{{t.email}}</mat-card-content>
+    </mat-card>
+  </div>
+    
+  
