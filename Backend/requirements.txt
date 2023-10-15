@@ -4,6 +4,4 @@ Flask-Bcrypt
 Flask-Migrate
 Flask-Cors
 Flask-JWT-Extended
-mysqlclient
-python-dotenv
-gunicorn
+
