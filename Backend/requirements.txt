@@ -1,9 +1,8 @@
-pip==23.3
 Flask
 Flask-SQLAlchemy
 Flask-Bcrypt
 Flask-Migrate
 Flask-Cors
 Flask-JWT-Extended
-mysqlclient==2.2.0
+mysqlclient==2.1.1
 python-dotenv
