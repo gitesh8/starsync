@@ -1,3 +1,4 @@
+pip==23.3
 Flask
 Flask-SQLAlchemy
 Flask-Bcrypt
