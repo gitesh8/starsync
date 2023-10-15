@@ -4,4 +4,5 @@ Flask-Bcrypt
 Flask-Migrate
 Flask-Cors
 Flask-JWT-Extended
+mysqlclient==2.2.0
 python-dotenv
