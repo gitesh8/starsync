@@ -46,6 +46,11 @@ For a detailed demonstration of Starsync's features, please check out our [Featu
 - **Get Tasks**: Retrieve tasks assigned to a team member.
 - **Update Task Status**: Change the status of a task.
 
+- ## Database Diagram
+
+![Database Diagram](https://github.com/gitesh8/starsync/blob/main/Images/db_diagram.png)
+
+
 ## Design Approach and Assumptions
 
 Our design approach focuses on user roles and their specific needs. We assume that users have a basic understanding of project management principles. Additionally, we assume that users will access the system through a web browser.
