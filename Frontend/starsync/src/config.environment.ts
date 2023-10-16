@@ -1,3 +1,3 @@
 export const environment = {
-    apiBaseUrl: 'https://starsync-backend.onrender.com/',
+    apiBaseUrl: 'http://127.0.0.1:5000/',
   };

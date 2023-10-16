@@ -1,4 +1,4 @@
-import { Component,Inject} from '@angular/core';
+import { ChangeDetectorRef, Component,Inject} from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { TaskDetails } from '../task-details';
 import { TeamMembers } from '../team-members';
@@ -23,13 +23,14 @@ export class AddTaskComponent{
 
   team:TeamMembers[]=[];
 
-  constructor(public dialogRef: MatDialogRef<AddTaskComponent>, @Inject(MAT_DIALOG_DATA) public data: { projectId: number },private managerService:ManagerService) {
+  constructor(public dialogRef: MatDialogRef<AddTaskComponent>, @Inject(MAT_DIALOG_DATA) public data: { projectId: number },private managerService:ManagerService, private cdr:ChangeDetectorRef) {
     // Assign the projectId from injected data to task.project_id
     this.task.project_id = data.projectId;
 
     this.managerService.getAllTeamMembers().subscribe(
       (data) => {
         this.team = (data as any).team;
+        this.cdr.detectChanges;
       },
       (error) => {
         console.error('Error fetching project managers:', error);
@@ -49,6 +50,10 @@ export class AddTaskComponent{
 
     // Close the dialog after successful submission
     this.dialogRef.close();
+
+    this.cdr.detectChanges();
+
+
   }
   
 }

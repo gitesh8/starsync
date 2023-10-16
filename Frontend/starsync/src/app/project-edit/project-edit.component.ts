@@ -55,7 +55,7 @@ export class ProjectEditComponent implements OnInit {
     this.managerService.viewProject(id).subscribe(
       (data:ProjectEdit) => {
         this.projectData = data;
-        console.log(this.projectData)
+        this.cdr.detectChanges()
       },
       (error:any) => {
         console.error('Error fetching project data:', error);
@@ -71,6 +71,7 @@ export class ProjectEditComponent implements OnInit {
     // After the modal is closed, you can handle any actions here
     dialogRef.afterClosed().subscribe(result => {
       this.getProjectData(projectid)
+      this.cdr.detectChanges()
     });
 
     
