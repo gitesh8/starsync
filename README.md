@@ -6,7 +6,10 @@ starsync is a versatile project management system designed to streamline your pr
 
 ## Feature Walkthrough
 
-For a detailed demonstration of starsync's features, please check out our [Feature Walkthrough Video](https://youtu.be/YSGc29S1Ey8).
+For a detailed demonstration of Starsync's features, please check out our [Feature Walkthrough Video](https://youtu.be/YSGc29S1Ey8).
+
+![Homepage](https://github.com/gitesh8/starsync/blob/main/Images/img1.PNG)
+![Signup Page](https://github.com/gitesh8/starsync/blob/main/Images/img2.PNG)
 
 ## Key Features
 
@@ -17,6 +20,8 @@ For a detailed demonstration of starsync's features, please check out our [Featu
 
 ### Admin Features
 
+![Admin](https://github.com/gitesh8/starsync/blob/main/Images/img3.PNG)
+
 - **Admin Dashboard**: View project details, the number of projects, team members, project managers, and new projects.
 - **Create New Project**: Create new projects, including details like project name, description, start date, end date, and project manager assignment.
 - **Get All Projects**: Retrieve a list of all projects.
@@ -26,6 +31,9 @@ For a detailed demonstration of starsync's features, please check out our [Featu
 
 ### Project Manager Features
 
+![Project Manager](https://github.com/gitesh8/starsync/blob/main/Images/img4.PNG)
+![Project Manager](https://github.com/gitesh8/starsync/blob/main/Images/img5.PNG)
+
 - **Update Project Status**: Update the status of a project.
 - **Get Team Members**: Retrieve a list of team members.
 - **Get Projects**: List projects assigned to the project manager.
@@ -34,6 +42,7 @@ For a detailed demonstration of starsync's features, please check out our [Featu
 
 ### Team Member Features
 
+![Team Memeber](https://github.com/gitesh8/starsync/blob/main/Images/img6.PNG)
 - **Get Tasks**: Retrieve tasks assigned to a team member.
 - **Update Task Status**: Change the status of a task.
 
