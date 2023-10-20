@@ -11,6 +11,7 @@ const routes: Routes = [
   { path: 'signup', component: SignupComponent},
   { path: '', component:HomepageComponent},
   { path:'login', component:LoginComponent},
+  { path:'starsync', component:HomepageComponent},
   { path:'admin',component:AdminComponent, data:{ComponentName: "Admin"}},
   { path:'team',component:TeamComponent, data:{ComponentName: "Team"}},
   { path:'manager',component:ManagerComponent, data:{ComponentName: "Manager"}},
