@@ -35,7 +35,7 @@ export class AdminService {
 
     //creating json object to avoid circular dependency problem
 
-    const apiUrl:string="http://127.0.0.1:5000/admin/project/new"
+    const apiUrl:string=`${this.apiBaseUrl}admin/project/new`
 
     // Extract just the date part from start and end dates
     const startDate = new Date(newProject.value.startdate);
